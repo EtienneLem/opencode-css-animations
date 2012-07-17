@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Animations CSS3</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.0/styles/default.min.css">
+    <script src="http://yandex.st/highlightjs/7.0/highlight.min.js"></script>
+    <script type="text/javascript" src="http://use.typekit.com/ulh7ulw.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  </head>
+  <body>
+    <section>
+      <article>
+        <h1>
+          Animations CSS3
+          <small>par <a href="http://twitter.com/EtienneLem"><span class="at">@</span>EtienneLem</a></small>
+        </h1>
+      </article>
+
+      <article>
+        <h1>Keyframes</h1>
+        <pre><code class="css">
+  /* Keyframes */
+  @keyframes helloworld {
+    from { left: 0; }
+    to   { left: 500px; }
+  }
+
+  @keyframes helloworld {
+    0% {
+      left: 0;
+      opacity: 0;
+    }
+
+    100% {
+      left: 500px;
+      opacity: 1;
+    }
+  }
+
+
+  /* Vendor prefixes? yes please */
+  -webkit-animation: ...;
+  -moz-animation: ...;
+  -ms-animation: ...;
+  -o-animation: ...;
+
+  @-webkit-keyframes helloworld { ... }
+  @-moz-keyframes helloworld { ... }
+  @-ms-keyframes helloworld { ... }
+  @-o-keyframes helloworld { ... }
+        </code></pre>
+      </article>
+
+      <article>
+        <h1>Let’s play!</h1>
+        <div id="example">
+          <div id="zone">
+            <div id="square"></div>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <h2>animation-duration</h2>
+            <pre><code class="css">/* s | ms [if no unit: s assumed] */</code></pre>
+            <!--<p>Configures the length of time that an animation should take to complete one cycle.</p>-->
+            <pre><code class="css">
+  #square {
+    animation-duration: 0s;
+  }
+            </code></pre>
+            <pre><code contentEditable>-webkit-animation: slide 1s;</code></pre>
+          </li>
+
+          <li>
+            <h2>animation-delay</h2>
+            <pre><code class="css">/* s | ms [if no unit: s assumed] */</code></pre>
+            <!--<p>Configures the delay between the time the element is loaded and the beginning of the animation sequence.</p>-->
+            <pre><code class="css">
+  #square {
+    animation-delay: 0s;
+  }
+            </code></pre>
+            <pre><code contentEditable>-webkit-animation: slide 1s 1s;</code></pre>
+          </li>
+
+          <li>
+            <h2>animation-iteration-count</h2>
+            <pre><code class="css">/* number | infinite */</code></pre>
+            <!--<p>Configures the number of times the animation should repeat; you can specify infinite to repeat the animation indefinitely.</p>-->
+            <pre><code class="css">
+  #square {
+    animation-iteration-count: 1;
+  }
+            </code></pre>
+            <pre><code contentEditable>-webkit-animation: slide 1s 3;</code></pre>
+          </li>
+
+          <li>
+            <h2>animation-direction</h2>
+            <pre><code class="css">/* normal | alternate | reverse | alternate-reverse */</code></pre>
+            <!--<p>Configures whether or not the animation should alternate direction on each run through the sequence or reset to the start point and repeat itself.</p>-->
+            <pre><code class="css">
+  #square {
+    animation-direction: normal;
+  }
+            </code></pre>
+            <pre><code contentEditable>-webkit-animation: slide 1s 2 alternate;</code></pre>
+          </li>
+
+          <li>
+            <h2>animation-fill-mode</h2>
+            <pre><code class="css">/* none | forwards | backwards | both */</code></pre>
+            <!--<p>Configures what values are applied by the animation before and after it is executing.</p>-->
+            <pre><code class="css">
+  #square {
+    animation-fill-mode: none;
+  }
+            </code></pre>
+            <pre><code contentEditable>-webkit-animation: slide 1s 1s forwards;</code></pre>
+          </li>
+
+          <li>
+            <h2>animation-timing-function</h2>
+            <pre><code class="css">/*
+cubic-bezier: x1, y1, x2, y2
+  [linear, ease, ease-in, ease-in-out, ease-out]
+
+steps: number_of_steps, direction
+  [step-start, step-end]
+*/</code></pre>
+            <!--<p>Configures the timing of the animation; that is, how the animation transitions through keyframes, by establishing acceleration curves.</p>-->
+            <pre><code class="css">
+  #square {
+    animation-timing-function: ease;
+  }
+            </code></pre>
+            <pre><code contentEditable>-webkit-animation: slide 1s linear;</code></pre>
+          </li>
+
+          <li>
+            <h2>animation-play-state</h2>
+            <pre><code class="css">/*
+running | paused
+Note: Can’t use w/ shorthand property `animation:`
+*/</code></pre>
+            <!--<p>Lets you pause and resume the animation sequence.</p>-->
+            <pre><code class="css">
+  #square {
+    animation-play-state: running;
+  }
+            </code></pre>
+            <a href="javascript:" class="btn-play-pause" data-value="running">Play</a>
+            <a href="javascript:" class="btn-play-pause" data-value="paused">Stop</a>
+            <div class="play-pause"><span></span></div>
+          </li>
+        </ul>
+      </article>
+    </section>
+
+    <article>
+      <h1>¡Moar challenge por favor!</h1>
+      <h2>Mario</h2>
+      <pre><code class="css">
+  mario {
+    display: block;
+    size: 19px 32px;
+    background: url(/images/mario.sprite.png) top left no-repeat;
+    -webkit-animation: mario .6s steps(8, end) infinite;
+  }
+
+  @-webkit-keyframes mario {
+    from { background-position: 0 0 }
+    to   { background-position: -152px 0 }
+  }
+      </code></pre>
+      <mario></mario>
+
+      <h2>Cube rotation</h2>
+      <pre><code class="css">
+  scene {
+    -webkit-perspective: 1000px;
+    -webkit-animation: scene 2s alternate infinite both;
+  }
+  cube { -webkit-animation: cube 2s infinite linear; }
+
+  @-webkit-keyframes cube {
+    from { -webkit-transform: rotateY(0) rotateX(0); }
+    to   { -webkit-transform: rotateY(360deg) rotateX(360deg); }
+  }
+  
+  @-webkit-keyframes scene {
+    from { -webkit-perspective: 2000px; }
+    to   { -webkit-perspective: 300px; }
+  }
+      </code></pre>
+      <scene>
+        <cube>
+          <face>1</face>
+          <face>2</face>
+          <face>3</face>
+          <face>4</face>
+          <face>5</face>
+          <face>6</face>
+        </cube>
+      </scene>
+
+      <h2>Voice syncing</h2>
+      <pre><code class="css">
+  gggg .mouth.animated { -webkit-animation: gggg 2s linear }
+
+  @-webkit-keyframes gggg {
+    0% { -webkit-transform: translate3d(0, 0, 0); }
+    7% { -webkit-transform: translate3d(0, 10px, 0); }
+    9% { -webkit-transform: translate3d(0, 2px, 0); }
+    11% { -webkit-transform: translate3d(0, 7px, 0); }
+    20% { -webkit-transform: translate3d(0, 9px, 0); }
+    38% { -webkit-transform: translate3d(0, 3px, 0); }
+    40% { -webkit-transform: translate3d(0, 8px, 0); }
+    45% { -webkit-transform: translate3d(0, 2px, 0); }
+    46% { -webkit-transform: translate3d(0, 6px, 0); }
+    49% { -webkit-transform: translate3d(0, 4px, 0); }
+    50% { -webkit-transform: translate3d(0, 6px, 0); }
+    59% { -webkit-transform: translate3d(0, 3px, 0); }
+    65% { -webkit-transform: translate3d(0, 6px, 0); }
+    70% { -webkit-transform: translate3d(0, 1px, 0); }
+    72% { -webkit-transform: translate3d(0, 0, 0); }
+  }
+      </code></pre>
+      <a href="javascript:" id="syncing-play">Play</a>
+      <gggg>
+        <audio src="audio/gggg.m4a"></audio>
+        <div class="mouth">
+          <span></span>
+        </div>
+      </gggg>
+    </article>
+
+    <script src="js/vendor/zepto.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>

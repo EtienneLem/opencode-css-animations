@@ -1,0 +1,258 @@
+@import "nib"
+@import "utils/reset"
+@import "utils/functions"
+@import "utils/mixins"
+
+// Variables -----------------------------------------------------------------
+$adelle = adelle, serif
+$orangecolor = #ff9900
+
+// Base ----------------------------------------------------------------------
+* { box-sizing: border-box }
+
+html
+  font-size: 62.5%
+
+body
+  font-size: 16
+  padding-bottom: 15em
+
+body, legend, input, textarea, button
+  font-family: 'Helvetica Neue'
+  line-height: 1.4
+  color: #333
+
+a:link, a:visited { color: deeppink }
+a:focus, a:link:hover  { color: hotpink }
+
+p, ul, ol, dl, blockquote, table, figure { margin: .8em 0 }
+ul { list-style-type: none }
+
+// Section -------------------------------------------------------------------
+section, article
+  width: 95%
+  max-width: 1024px
+  margin: auto
+
+// Code ----------------------------------------------------------------------
+code
+  border-radius: 3px
+  border: 1px solid #ccc
+
+  &.current
+    border-color: green
+    background-color: lighten(green, 90%)
+
+// Article -------------------------------------------------------------------
+article
+  position: relative
+  padding: 1em 2em
+
+  h1, h2
+    color: $orangecolor
+    font-family: $adelle
+    font-size: 30
+    font-weight: 100
+    text-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,.1)
+
+  h2
+    font-size: 21
+    text-shadow: none
+    color: darken($orangecolor, 20%)
+
+// Example -------------------------------------------------------------------
+#example
+  position: absolute
+
+  &.fixed
+    position: fixed
+    top: 54px
+
+  &.bottom
+    position: absolute
+    top: auto
+    bottom: 99px
+
+  #zone
+    width: 400px;
+    background-color: #f4f4f4
+    border: 2px dashed #ccc
+    border-radius: 5px
+    padding: .5em
+
+    #square
+      position: relative
+      size: 100px
+      background-color: #999
+      pointer-events: none
+
+      &.animated { -webkit-animation: slide .6s }
+
+    &:hover
+      background-color: darken(#f4f4f4, 5%)
+      border-color: darken(#ccc, 20%)
+
+@-webkit-keyframes slide
+  from
+    -webkit-transform: translate3d(0, 0, 0)
+
+  to
+    -webkit-transform: translate3d(280px, 0, 0) rotate(45deg)
+
+
+@-webkit-keyframes slide2
+  from
+    -webkit-transform: translate3d(100px, 0, 0)
+
+  to
+    -webkit-transform: translate3d(280px, 0, 0) rotate(45deg)
+
+// List ----------------------------------------------------------------------
+ul
+  padding: 0 0 0 420px
+
+  li + li
+    padding-top: 3em
+
+// First ---------------------------------------------------------------------
+article:nth-child(1)
+  h1
+    font-size: 44
+    text-align: center
+
+    small
+      display: block
+      font-size: .5em
+      text-shadow: 1px 1px 0 rgba(0,0,0,.1)
+
+  .at
+    display: inline-block
+    -webkit-animation: spin 1s 0 infinite linear
+
+@-webkit-keyframes spin
+  from { -webkit-transform: rotate(0deg) }
+  to { -webkit-transform: rotate(360deg) }
+
+// Play/Pause ----------------------------------------------------------------
+.play-pause
+  padding-top: 1em
+
+  span
+    display: block
+    size: 22px
+    background-color: #999
+    -webkit-animation: play-pause .6s infinite alternate
+    -webkit-animation-play-state: paused
+
+@-webkit-keyframes play-pause
+  from { -webkit-transform: translate3d(0, 0, 0) rotate(0) }
+  to { -webkit-transform: translate3d(450px, 0, 0) rotate(360deg) }
+
+// Mario ---------------------------------------------------------------------
+mario
+  display: block
+  size: 19px 32px
+  background: url(../images/mario.sprite.png) top left no-repeat
+  -webkit-animation: mario .6s steps(8, end) infinite
+
+@-webkit-keyframes mario
+  from { background-position: 0 0 }
+  to { background-position: -152px 0 }
+
+// Greg ----------------------------------------------------------------------
+gggg
+  position: relative
+  display: block
+  size: 203px 218px
+  background: url(../images/gggg.png) left top no-repeat
+
+  .mouth
+    position: absolute
+    top: 167px; left: 64px
+    display: block
+    size: 47px 38px
+    background: url(../images/gggg-mouth-bg.png) left top no-repeat
+
+    &.animated span
+      -webkit-animation: gggg 2s linear
+
+    span
+      display: block
+      width: 100%; height: 100%
+      background: url(../images/gggg-mouth.png) left top no-repeat
+
+@-webkit-keyframes gggg
+  0% { -webkit-transform: translate3d(0, 0, 0) }
+
+  // My
+  7% { -webkit-transform: translate3d(0, 10px, 0) }
+  9% { -webkit-transform: translate3d(0, 2px, 0) }
+
+  // Name
+  11% { -webkit-transform: translate3d(0, 7px, 0) }
+
+  // Is eeeeeee…
+  20% { -webkit-transform: translate3d(0, 9px, 0) }
+  38% { -webkit-transform: translate3d(0, 3px, 0) }
+
+  // Greg
+  40% { -webkit-transform: translate3d(0, 8px, 0) }
+  45% { -webkit-transform: translate3d(0, 2px, 0) }
+
+  // Sa
+  46% { -webkit-transform: translate3d(0, 6px, 0) }
+  49% { -webkit-transform: translate3d(0, 4px, 0) }
+
+  // det
+  50% { -webkit-transform: translate3d(0, 6px, 0) }
+  59% { -webkit-transform: translate3d(0, 3px, 0) }
+
+  // sky
+  68% { -webkit-transform: translate3d(0, 6px, 0) }
+  73% { -webkit-transform: translate3d(0, 1px, 0) }
+  76% { -webkit-transform: translate3d(0, 0, 0) }
+
+// Cube ----------------------------------------------------------------------
+scene
+  display: block
+  height: 600px
+  padding-top: 200px
+  -webkit-perspective: 1000px
+  -webkit-animation: scene 2s alternate infinite both
+
+cube
+  position: relative
+  top: 50px; left: 250px
+  size: 50px
+  display: block
+  -webkit-transform-style: preserve-3d
+  -webkit-animation: cube 2s infinite linear
+
+  face
+    position: absolute
+    top: 0; left: 0
+    display: block
+    size: 200px
+    background-color: hotpink
+    opacity: .5
+    color: rgba(255, 255, 255, .8)
+    text-align: center
+    line-height: 200px
+    font-size: 120px
+    font-weight: bold
+    border: 2px solid #000
+
+    &:nth-child(1) { -webkit-transform: translateZ(100px); background-color: lime }
+    &:nth-child(2) { -webkit-transform: rotateX(-180deg) translateZ(100px); background-color: orange }
+    &:nth-child(3) { -webkit-transform: rotateY(90deg) translateZ(100px); background-color: aqua }
+    &:nth-child(4) { -webkit-transform: rotateY(-90deg) translateZ(100px); background-color: gold }
+    &:nth-child(5) { -webkit-transform: rotateX(90deg) translateZ(100px); background-color: hotpink }
+    &:nth-child(6) { -webkit-transform: rotateX(-90deg) translateZ(100px); background-color: magenta }
+
+@-webkit-keyframes cube
+  from { -webkit-transform: rotateY(0) rotateX(0) }
+  to { -webkit-transform: rotateY(360deg) rotateX(360deg) }
+
+@-webkit-keyframes scene
+  from { -webkit-perspective: 2000px }
+  to { -webkit-perspective: 300px }
